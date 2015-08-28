@@ -2,15 +2,16 @@
 # -*- coding: utf-8 -*-
 
 #
-# Author: Tomokuni SEKIYA
+# Authors: Tomokuni SEKIYA
+#          pomutemu
 #
 
 # version
-newfont_version      = "2.007.20150313"
+newfont_version      = "2.008"
 newfont_sfntRevision = 0x00010000
 
 # set font name
-newfontM  = ("../Myrica-MM.ttf", "Myrica-MM", "Myrica MM", "Myrica MM")
+newfontM  = ("../milly.ttf", "milly", "milly", "milly")
 
 # source file
 srcfontIncosolata   = "../SourceTTF/Inconsolata-Powerline-Regular.ttf"
@@ -223,9 +224,6 @@ def setFontProp(font, fontInfo):
     font.version = newfont_version
     font.sfntRevision = newfont_sfntRevision
     font.sfnt_names = (('English (US)', 'UniqueID', fontInfo[2]), )
-    #('Japanese', 'PostScriptName', fontInfo[2]),
-    #('Japanese', 'Family', fontInfo[1]),
-    #('Japanese', 'Fullname', fontInfo[3]),
 
     font.hasvmetrics = True
     font.head_optimized_for_cleartype = True
@@ -268,7 +266,7 @@ fRp.em  = newfont_em
 fRp.ascent  = newfont_ascent
 fRp.descent = newfont_descent
 
-# post-process
+# postprocess
 fRp.selection.all()
 fRp.round()
 
@@ -318,7 +316,7 @@ fIn.em  = newfont_em
 fIn.ascent  = newfont_ascent
 fIn.descent = newfont_descent
 
-# post-process
+# postprocess
 fIn.selection.all()
 fIn.round()
 
@@ -385,10 +383,6 @@ for l in fGs.gsub_lookups:
 for l in fMm.gsub_lookups:
     if l.startswith(fGs.fontname + "-") == True:
         fMm.removeLookup(l)
-#for l in fMm.gpos_lookups:
-#    fMm.removeLookup(l)
-#for l in fGs.gpos_lookups:
-#    fMm.importLookups(fGs, l)
 
 # generate
 print "Generate " + newfontM[0]
